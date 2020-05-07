@@ -8,7 +8,7 @@ import items from './data';
 import Mouse from "./components/Mouse";
 import Cat from "./components/Cat";
 import CatWithHook from "./components/CatWithHook";
-
+import ErrorBoundary from "./components/ErrorBoundary";
 
 export const AppContext = createContext();
 
@@ -73,17 +73,19 @@ export default class App extends Component {
 
   render() {
     return (
-      // <AppContext.Provider value={{
-      //     removeItem: this.removeItem,
-      //     addItem: this.addItem,
-      // }}>
-      //   <div className="App">
-      //     {this.state.loading && <Spinner />}
-      //     {this.state.error && <h1>{this.state.error}</h1>}
-      //     <Form addItem={this.addItem}/>
-      //     <CartList items={this.state.items}/>
-      //   </div>
-      // </AppContext.Provider>
+      <ErrorBoundary>
+        <AppContext.Provider value={{
+            removeItem: this.removeItem,
+            addItem: this.addItem,
+        }}>
+          <div className="App">
+            {this.state.loading && <Spinner />}
+            {this.state.error && <h1>{this.state.error}</h1>}
+            <Form addItem={this.addItem}/>
+            <CartList items={this.state.items}/>
+          </div>
+        </AppContext.Provider>
+      </ErrorBoundary>
       // <Mouse>
       //    {({x, y}) => (
       //      <h1> {x} - {y} </h1>
@@ -92,7 +94,7 @@ export default class App extends Component {
       // <Mouse>
       //   {(state) => <Cat {...state}></Cat>}
       // </Mouse>
-      <CatWithHook/>
+      // <CatWithHook/>
     );
   }
 }
