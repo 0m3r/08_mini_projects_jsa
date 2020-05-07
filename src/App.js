@@ -5,6 +5,8 @@ import CartList from "./components/CartList";
 import Form from "./components/Form";
 import Spinner from "./components/Spinner";
 import items from './data';
+import Mouse from "./components/Mouse";
+import Cat from "./components/Cat";
 
 
 export const AppContext = createContext();
@@ -70,17 +72,25 @@ export default class App extends Component {
 
   render() {
     return (
-      <AppContext.Provider value={{
-          removeItem: this.removeItem,
-          addItem: this.addItem,
-      }}>
-        <div className="App">
-          {this.state.loading && <Spinner />}
-          {this.state.error && <h1>{this.state.error}</h1>}
-          <Form addItem={this.addItem}/>
-          <CartList items={this.state.items}/>
-        </div>
-      </AppContext.Provider>
+      // <AppContext.Provider value={{
+      //     removeItem: this.removeItem,
+      //     addItem: this.addItem,
+      // }}>
+      //   <div className="App">
+      //     {this.state.loading && <Spinner />}
+      //     {this.state.error && <h1>{this.state.error}</h1>}
+      //     <Form addItem={this.addItem}/>
+      //     <CartList items={this.state.items}/>
+      //   </div>
+      // </AppContext.Provider>
+      // <Mouse>
+      //    {({x, y}) => (
+      //      <h1> {x} - {y} </h1>
+      //   )}
+      // </Mouse>
+      <Mouse>
+        {(state) => <Cat {...state}></Cat>}
+      </Mouse>
     );
   }
 }
