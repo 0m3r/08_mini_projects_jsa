@@ -1,6 +1,7 @@
 import React, {useState, useContext} from "react";
 import PropTypes from 'prop-types';
 import {AppContext} from './../App';
+import {Button} from './Styled';
 
 export default function Form () {
 
@@ -23,7 +24,7 @@ export default function Form () {
             <div className="form-box__item">
               <input value={userName}
               onChange={handleChange} type="text" />
-              <button>Add user</button>
+              <Button type={'submit'} color='red' >Add user</Button>
             </div>
           </div>
         </form>
