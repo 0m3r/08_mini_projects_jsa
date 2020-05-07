@@ -7,6 +7,7 @@ import Spinner from "./components/Spinner";
 import items from './data';
 import Mouse from "./components/Mouse";
 import Cat from "./components/Cat";
+import CatWithHook from "./components/CatWithHook";
 
 
 export const AppContext = createContext();
@@ -88,9 +89,10 @@ export default class App extends Component {
       //      <h1> {x} - {y} </h1>
       //   )}
       // </Mouse>
-      <Mouse>
-        {(state) => <Cat {...state}></Cat>}
-      </Mouse>
+      // <Mouse>
+      //   {(state) => <Cat {...state}></Cat>}
+      // </Mouse>
+      <CatWithHook/>
     );
   }
 }
